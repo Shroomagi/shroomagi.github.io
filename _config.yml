@@ -7,11 +7,11 @@ title: "Shroomagi - OSRS / Cyber Security"
 description: A Github Pages (Jekyll) template based on TailwindCSS
 
 # color theme for links
-theme-color: indigo # indigo|yellow|pink|green|stone|
+theme-color: stone # indigo|yellow|pink|green|stone|
 
 # homepage information
 author: Shroomagi
-author-bio: Shroomagi  # change to false to hide
+author-bio: Reverse Engineering + Cyber Security + OSRS   # change to false to hide
 author-image: 279.png  # file must be in the /assets/img/ folder
 
 # navigation menu
