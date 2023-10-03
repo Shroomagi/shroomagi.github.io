@@ -3,7 +3,7 @@ baseurl: "/shroomagi.github.io" # the name of your github repo
 url: "https://shroomagi.github.io" # the url of your github pages
 
 # site information used in page title, meta data etc.
-title: "Shroomagi - OSRS / Cyber Security"
+title: "Shroomagi - Security Research + OSRS"
 description: A Github Pages (Jekyll) template based on TailwindCSS
 
 # color theme for links
