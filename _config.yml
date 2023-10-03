@@ -36,7 +36,7 @@ google-scholar: false
 email: false
 
 # footer information
-footer-msg: "© Shroomagi 2023"
+footer-msg: "Shroomagi"
 footer-msg-link: https://github.com/harrywang/tailpages
 
 # google analytics
