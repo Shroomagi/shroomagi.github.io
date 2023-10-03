@@ -1,17 +1,17 @@
 # change the followings to match your Github username and repo name
-baseurl: "/tailpages" # the name of your github repo
-url: "https://harrywang.github.io" # the url of your github pages
+baseurl: "/shroomagi.github.io" # the name of your github repo
+url: "https://shroomagi.github.io" # the url of your github pages
 
 # site information used in page title, meta data etc.
-title: "Tailpages: Tailwind + Github Pages"
+title: "Shroomagi - OSRS / Cyber Security"
 description: A Github Pages (Jekyll) template based on TailwindCSS
 
 # color theme for links
 theme-color: indigo # indigo|yellow|pink|green|stone|
 
 # homepage information
-author: Satoshi Nakamoto
-author-bio: Creator of Bitcoin  # change to false to hide
+author: Shroomagi
+author-bio: Shroomagi  # change to false to hide
 author-image: 279.png  # file must be in the /assets/img/ folder
 
 # navigation menu
@@ -20,17 +20,17 @@ show-nav-menu: true
 nav-menu:
 - text: About
   permalink: about
-- text: Bitcoin
-  permalink: bitcoin
+- text: Placeholder
+  permalink: Placeholder
 - text: Blog
   permalink: blog
 
 # use false to turn off any social media links
-twitter: https://twitter.com/
+twitter: https://twitter.com/shroomagi
 facebook: https://facebook.com/
-instagram: https://instagram.com/
-github: https://github.com/
-linkedin: https://linkedin.com/
+instagram: https://instagram.com/shroomagi
+github: https://github.com/shroomagi
+linkedin: false
 medium: false
 google-scholar: false
 email: false
