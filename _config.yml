@@ -38,10 +38,10 @@ tiktok: https://tiktok.com/@shroomagi
 twitch: https://twitch.com/shroomagi
 youtube: https://www.youtube.com/@shroomagi
 kick: https://kick.com/shroomagi
-
+eth: https://app.ens.domains/shroomagi.eth
 # footer information
 footer-msg: "Shroomagi"
-footer-msg-link: https://github.com/harrywang/tailpages
+footer-msg-link: https://github.com/shroomagi
 
 # google analytics
 google-analytics: false
