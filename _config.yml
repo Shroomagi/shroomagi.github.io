@@ -27,7 +27,7 @@ nav-menu:
 
 # use false to turn off any social media links
 twitter: https://twitter.com/shroomagi
-facebook: https://facebook.com/
+facebook: false
 instagram: https://instagram.com/shroomagi
 github: https://github.com/shroomagi
 linkedin: false
@@ -36,11 +36,11 @@ google-scholar: false
 email: false
 
 # footer information
-footer-msg: "Powered by Tailpages"
+footer-msg: "© Shroomagi 2023"
 footer-msg-link: https://github.com/harrywang/tailpages
 
 # google analytics
-google-analytics: G-WCRC1TC2V5
+google-analytics: false
 
 # jekyll plugins - no need to change
 plugins:
