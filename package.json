@@ -1,9 +1,9 @@
 {
-  "name": "tailpages",
+  "name": "shroomagi.com",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/harrywang/tailpages.git",
-  "author": "Harry Wang <harryjwang@gmail.com>",
+  "repository": "https://github.com/shroomagi/tailpages.git",
+  "author": "Shroomagi",
   "license": "MIT",
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.0",
