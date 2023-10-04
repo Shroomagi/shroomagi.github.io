@@ -8,7 +8,7 @@ description: A Github Pages (Jekyll) template based on TailwindCSS
 
 # color theme for links
 theme-color: stone # indigo|yellow|pink|green|stone|
-
+dark-theme: true
 # homepage information
 author: Shroomagi
 author-bio: Security Research + OSRS <br> Content Coming Soon   # change to false to hide
