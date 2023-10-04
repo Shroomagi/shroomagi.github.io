@@ -42,7 +42,7 @@ footer-msg: "Shroomagi"
 footer-msg-link: https://github.com/shroomagi
 
 # google analytics
-google-analytics: false
+google-analytics: G-FFTFRT6LGT
 
 # jekyll plugins - no need to change
 plugins:
