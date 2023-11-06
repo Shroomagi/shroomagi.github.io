@@ -11,7 +11,7 @@ theme-color: stone # indigo|yellow|pink|green|stone|
 dark-theme: true
 # homepage information
 author: Shroomagi
-author-bio: Security Research + OSRS <br> Content Coming Soon   # change to false to hide
+author-bio: Security Research + OSRS & WoW <br> Content Coming Soon   # change to false to hide
 author-image: 279.png  # file must be in the /assets/img/ folder
 
 # navigation menu
