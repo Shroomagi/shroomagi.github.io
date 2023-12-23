@@ -12,7 +12,7 @@ module.exports = {
           css: {
             pre: {
               padding: "0",
-              color: "#1F2933",
+              color: "#F3F3F3",
               backgroundColor: "#F3F3F3"
             },
             code: {
