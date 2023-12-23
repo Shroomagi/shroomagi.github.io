@@ -15,7 +15,7 @@ author-bio: Security Research + OSRS & WoW <br> Content Coming Soon   # change t
 author-image: 279.png  # file must be in the /assets/img/ folder
 
 # navigation menu
-show-nav-menu: true
+show-nav-menu: false
 
 nav-menu:
 - text: About
