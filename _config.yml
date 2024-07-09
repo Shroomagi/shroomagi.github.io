@@ -3,8 +3,8 @@ baseurl: "/shroomagi.github.io" # the name of your github repo
 url: "https://shroomagi.github.io" # the url of your github pages
 
 # site information used in page title, meta data etc.
-title: "Shroomagi - Security Research + OSRS & WoW Content"
-description: Security Research Blog + OSRS / World of Warcraft Content and Streams!
+title: "Shroomagi - Security Research + OSRS Content"
+description: Security Research Blog + OSRS Content and Streams!
 
 # color theme for links
 theme-color: stone # indigo|yellow|pink|green|stone|
