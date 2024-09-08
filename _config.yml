@@ -1,6 +1,6 @@
 # change the followings to match your Github username and repo name
 baseurl: "/shroomagi.github.io" # the name of your github repo
-url: "https://shroomagi.github.io" # the url of your github pages
+url: "https://shroomagi.com" # the url of your github pages
 
 # site information used in page title, meta data etc.
 title: "Shroomagi - Security Research + WoW / OSRS Content"
