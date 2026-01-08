@@ -2,23 +2,26 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  min-height: 100svh;
   overflow: hidden;
   background: black;
   font-family: sans-serif;
 }
 
-/* Video background — SAME behavior as your working example */
+/* Video background */
 #bgVideo {
   position: fixed;
   top: 50%;
   left: 50%;
   min-width: 100%;
   min-height: 100%;
+  max-width: none;
+  max-height: none;
   width: auto;
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* Buttons */
@@ -31,21 +34,35 @@ html, body {
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
+  max-width: min(90vw, 600px);
   z-index: 1;
 }
 
 .social-btn {
-  padding: 12px 24px;
-  font-size: 1em;
+  padding: clamp(10px, 2.5vw, 14px) clamp(16px, 4vw, 28px);
+  font-size: clamp(0.9rem, 3.5vw, 1.05rem);
   color: white;
-  background: rgba(50, 50, 50, 0.65);
-  border: 1px solid #888;
+  background: rgba(30, 30, 30, 0.75);
+  border: 1px solid #000000;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .social-btn:hover {
   background: rgba(100, 100, 100, 0.85);
   border-color: white;
+}
+
+@media (max-width: 480px) {
+  .button-container {
+    flex-direction: column;
+    width: 90vw;
+  }
+
+  .social-btn {
+    width: 100%;
+  }
 }
