@@ -1,0 +1,51 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  font-family: sans-serif;
+}
+
+/* Video background — SAME behavior as your working example */
+#bgVideo {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Buttons */
+.button-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  z-index: 1;
+}
+
+.social-btn {
+  padding: 12px 24px;
+  font-size: 1em;
+  color: white;
+  background: rgba(50, 50, 50, 0.65);
+  border: 1px solid #888;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.social-btn:hover {
+  background: rgba(100, 100, 100, 0.85);
+  border-color: white;
+}
