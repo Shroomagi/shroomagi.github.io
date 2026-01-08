@@ -1,24 +1,35 @@
 let audioStarted = false;
+let audioSrc;
+let audioCtx;
 
 function startReversedAudio() {
   if (audioStarted) return;
   audioStarted = true;
 
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
   fetch("intro.mp3")
     .then(r => r.arrayBuffer())
-    .then(b => ctx.decodeAudioData(b))
+    .then(b => audioCtx.decodeAudioData(b))
     .then(buffer => {
       for (let c = 0; c < buffer.numberOfChannels; c++) {
         Array.prototype.reverse.call(buffer.getChannelData(c));
       }
 
-      const src = ctx.createBufferSource();
-      src.buffer = buffer;
-      src.loop = true;
-      src.connect(ctx.destination);
-      src.start();
+      audioSrc = audioCtx.createBufferSource();
+      audioSrc.buffer = buffer;
+      audioSrc.loop = true;
+
+      // Gain node for volume control
+      const gainNode = audioCtx.createGain();
+      audioSrc.connect(gainNode).connect(audioCtx.destination);
+      audioSrc.start();
+
+      // Connect slider
+      const slider = document.getElementById('volumeSlider');
+      slider.addEventListener('input', e => {
+        gainNode.gain.value = e.target.value;
+      });
     });
 
   window.removeEventListener("click", startReversedAudio);
@@ -28,12 +39,11 @@ function startReversedAudio() {
 window.addEventListener("click", startReversedAudio);
 window.addEventListener("keydown", startReversedAudio);
 
-
+// Social buttons open links
 const buttons = document.querySelectorAll('.social-btn');
-
 buttons.forEach(button => {
   button.addEventListener('click', () => {
     const link = button.getAttribute('data-link');
-    window.open(link, '_blank'); // Opens in a new tab
+    window.open(link, '_blank');
   });
 });
