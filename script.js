@@ -25,6 +25,10 @@ function startReversedAudio() {
       audioSrc.connect(gainNode).connect(audioCtx.destination);
       audioSrc.start();
 
+      // Show slider now
+      const sliderContainer = document.querySelector('.volume-container');
+      sliderContainer.classList.remove('hidden');
+
       // Connect slider
       const slider = document.getElementById('volumeSlider');
       slider.addEventListener('input', e => {
