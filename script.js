@@ -7,7 +7,13 @@ function startReversedAudio() {
   audioStarted = true;
 
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const bgVideo = document.getElementById("bgVideo");
+  bgVideo.play();
 
+  const ctaText = document.querySelector('.cta-text');
+  if (ctaText) ctaText.remove()
+
+    
   fetch("intro.mp3")
     .then(r => r.arrayBuffer())
     .then(b => audioCtx.decodeAudioData(b))
