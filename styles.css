@@ -28,7 +28,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem; /* space between CTA, buttons, slider */
+  gap: 1.5rem;
   z-index: 1;
   width: 90vw;
   max-width: 600px;
@@ -40,13 +40,39 @@ html, body {
   font-size: clamp(1rem, 4vw, 1.4rem);
   letter-spacing: 0.05em;
   text-align: center;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 
   text-shadow:
     0 0 6px rgba(255,255,255,0.6),
     0 0 12px rgba(255,255,255,0.4);
 
   animation: glowPulse 2.2s ease-in-out infinite;
+}
+
+/* Mobile play triangle */
+.cta-text.mobile-play::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 40px solid rgba(255, 255, 255, 0.9);
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
+  margin: 0 auto 15px;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.6));
+  animation: trianglePulse 2.2s ease-in-out infinite;
+}
+
+@keyframes trianglePulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 @keyframes glowPulse {

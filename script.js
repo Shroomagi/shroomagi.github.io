@@ -2,17 +2,9 @@ let audioStarted = false;
 let audioSrc;
 let audioCtx;
 
-// Modern mobile detection (feature-based)
-function isMobileTouchDevice() {
-  // Check for touch capability
-  const hasTouch = ('ontouchstart' in window) || 
-                   (navigator.maxTouchPoints > 0) || 
-                   (navigator.msMaxTouchPoints > 0);
-  
-  // Check for mobile user agent as backup
-  const mobileUA = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  
-  return hasTouch || mobileUA;
+// Reliable mobile detection - checks for hoverable mouse
+function isMobile() {
+  return window.matchMedia("(any-hover: none)").matches;
 }
 
 function startReversedAudio() {
@@ -56,7 +48,7 @@ function startReversedAudio() {
   window.removeEventListener("keydown", startReversedAudio);
 }
 
-// Global listeners (unchanged)
+// Global listeners
 window.addEventListener("click", startReversedAudio);
 window.addEventListener("keydown", startReversedAudio);
 
@@ -67,16 +59,22 @@ document.querySelectorAll('.social-btn').forEach(button => {
   });
 });
 
-// ✅ SAFARI FIX: wait until DOM exists
+// Safari mobile fix
 document.addEventListener("DOMContentLoaded", () => {
   const ctaText = document.querySelector('.cta-text');
   if (!ctaText) return;
 
-  // Desktop / general click still works
-  ctaText.addEventListener("click", startReversedAudio, { once: true });
-
   // Mobile-only play triangle
-  if (isMobileTouchDevice()) {
+  if (isMobile()) {
     ctaText.classList.add("mobile-play");
+    
+    // iOS Safari needs explicit touch event
+    ctaText.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      startReversedAudio();
+    }, { once: true, passive: false });
   }
+  
+  // Desktop click
+  ctaText.addEventListener("click", startReversedAudio, { once: true });
 });
