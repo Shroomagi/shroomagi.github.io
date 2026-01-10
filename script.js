@@ -2,6 +2,13 @@ let audioStarted = false;
 let audioSrc;
 let audioCtx;
 
+// Modern mobile detection (touch device + small screen)
+function isMobileTouchDevice() {
+  const hasTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  const smallScreen = window.matchMedia("(max-width: 768px)").matches;
+  return hasTouch && smallScreen;
+}
+
 function startReversedAudio() {
   if (audioStarted) return;
   audioStarted = true;
@@ -10,10 +17,10 @@ function startReversedAudio() {
   const bgVideo = document.getElementById("bgVideo");
   bgVideo.play();
 
+  // Remove CTA text if present
   const ctaText = document.querySelector('.cta-text');
-  if (ctaText) ctaText.remove()
+  if (ctaText) ctaText.remove();
 
-    
   fetch("intro.mp3")
     .then(r => r.arrayBuffer())
     .then(b => audioCtx.decodeAudioData(b))
@@ -46,6 +53,7 @@ function startReversedAudio() {
   window.removeEventListener("keydown", startReversedAudio);
 }
 
+// Normal desktop/touch listeners
 window.addEventListener("click", startReversedAudio);
 window.addEventListener("keydown", startReversedAudio);
 
@@ -58,6 +66,14 @@ buttons.forEach(button => {
   });
 });
 
-
+// CTA text click listener for desktop/touch
 const ctaText = document.querySelector('.cta-text');
 if (ctaText) ctaText.addEventListener("click", startReversedAudio, { once: true });
+
+// Mobile-only: replace CTA text with play triangle
+if (isMobileTouchDevice()) {
+  if (ctaText) {
+    ctaText.classList.add("mobile-play");
+    ctaText.addEventListener("click", startReversedAudio, { once: true });
+  }
+}
