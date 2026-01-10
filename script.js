@@ -2,10 +2,14 @@ let audioStarted = false;
 let audioSrc;
 let audioCtx;
 
-// Modern mobile detection (touch device + small screen)
+// Modern mobile detection (feature-based)
 function isMobileTouchDevice() {
-  const hasTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  const hasTouch =
+    ('ontouchstart' in window) ||
+    navigator.maxTouchPoints > 0;
+
   const smallScreen = window.matchMedia("(max-width: 768px)").matches;
+
   return hasTouch && smallScreen;
 }
 
@@ -14,10 +18,10 @@ function startReversedAudio() {
   audioStarted = true;
 
   audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
   const bgVideo = document.getElementById("bgVideo");
   bgVideo.play();
 
-  // Remove CTA text if present
   const ctaText = document.querySelector('.cta-text');
   if (ctaText) ctaText.remove();
 
@@ -33,16 +37,13 @@ function startReversedAudio() {
       audioSrc.buffer = buffer;
       audioSrc.loop = true;
 
-      // Gain node for volume control
       const gainNode = audioCtx.createGain();
       audioSrc.connect(gainNode).connect(audioCtx.destination);
       audioSrc.start();
 
-      // Show slider now
       const sliderContainer = document.querySelector('.volume-container');
       sliderContainer.classList.remove('hidden');
 
-      // Connect slider
       const slider = document.getElementById('volumeSlider');
       slider.addEventListener('input', e => {
         gainNode.gain.value = e.target.value;
@@ -53,27 +54,27 @@ function startReversedAudio() {
   window.removeEventListener("keydown", startReversedAudio);
 }
 
-// Normal desktop/touch listeners
+// Global listeners (unchanged)
 window.addEventListener("click", startReversedAudio);
 window.addEventListener("keydown", startReversedAudio);
 
-// Social buttons open links
-const buttons = document.querySelectorAll('.social-btn');
-buttons.forEach(button => {
+// Social buttons
+document.querySelectorAll('.social-btn').forEach(button => {
   button.addEventListener('click', () => {
-    const link = button.getAttribute('data-link');
-    window.open(link, '_blank');
+    window.open(button.getAttribute('data-link'), '_blank');
   });
 });
 
-// CTA text click listener for desktop/touch
-const ctaText = document.querySelector('.cta-text');
-if (ctaText) ctaText.addEventListener("click", startReversedAudio, { once: true });
+// ✅ SAFARI FIX: wait until DOM exists
+document.addEventListener("DOMContentLoaded", () => {
+  const ctaText = document.querySelector('.cta-text');
+  if (!ctaText) return;
 
-// Mobile-only: replace CTA text with play triangle
-if (isMobileTouchDevice()) {
-  if (ctaText) {
+  // Desktop / general click still works
+  ctaText.addEventListener("click", startReversedAudio, { once: true });
+
+  // Mobile-only play triangle
+  if (isMobileTouchDevice()) {
     ctaText.classList.add("mobile-play");
-    ctaText.addEventListener("click", startReversedAudio, { once: true });
   }
-}
+});
