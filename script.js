@@ -11,18 +11,25 @@ function startReversedAudio() {
   if (audioStarted) return;
   audioStarted = true;
 
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
   const bgVideo = document.getElementById("bgVideo");
   bgVideo.play();
 
   const ctaText = document.querySelector('.cta-text');
   if (ctaText) ctaText.remove();
 
+  // Create audio context AFTER user interaction
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // iOS Safari needs context to be resumed
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+
   fetch("intro.mp3")
     .then(r => r.arrayBuffer())
     .then(b => audioCtx.decodeAudioData(b))
     .then(buffer => {
+      // Reverse the audio
       for (let c = 0; c < buffer.numberOfChannels; c++) {
         Array.prototype.reverse.call(buffer.getChannelData(c));
       }
@@ -33,7 +40,7 @@ function startReversedAudio() {
 
       const gainNode = audioCtx.createGain();
       audioSrc.connect(gainNode).connect(audioCtx.destination);
-      audioSrc.start();
+      audioSrc.start(0);
 
       const sliderContainer = document.querySelector('.volume-container');
       sliderContainer.classList.remove('hidden');
@@ -42,6 +49,9 @@ function startReversedAudio() {
       slider.addEventListener('input', e => {
         gainNode.gain.value = e.target.value;
       });
+    })
+    .catch(err => {
+      console.error('Audio error:', err);
     });
 
   window.removeEventListener("click", startReversedAudio);
