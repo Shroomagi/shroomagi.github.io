@@ -131,7 +131,7 @@ html, body {
 
 .cta-text {
   position: fixed;
-  top: calc(50% - 120px); /* above buttons */
+  top: clamp(20%, 35%, 40%); /* responsive vertical position */
   left: 50%;
   transform: translateX(-50%);
   color: white;

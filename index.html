@@ -8,12 +8,15 @@
 </head>
 <body>
 
-  <!-- Background Video -->
-  <video id="bgVideo" muted loop playsinline>
-    <source src="background.webm" type="video/webm">
-    Your browser does not support the video tag.
-  </video>
-
+<video id="bgVideo" muted loop playsinline preload="auto">
+  <!-- Preferred modern format for browsers that support it -->
+  <source src="background.webm" type="video/webm; codecs=av01.0.05M.08">
+  
+  <!-- Fallback for Safari and other browsers that don't support WebM/AV1 -->
+  <source src="background.mp4" type="video/mp4">
+  
+  Your browser does not support the video tag.
+</video>
 
 <div class="cta-text">
   Click anywhere or press any key
