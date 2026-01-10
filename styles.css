@@ -19,8 +19,8 @@ html, body {
   z-index: 0;
 }
 
-/* UI container to stack CTA + buttons */
-.ui-container {
+/* UI stack container */
+.ui-stack {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -28,7 +28,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem; /* space between CTA and buttons */
+  gap: 1.5rem; /* space between CTA, buttons, slider */
   z-index: 1;
   width: 90vw;
   max-width: 600px;
@@ -109,12 +109,7 @@ html, body {
 
 /* Volume Slider */
 .volume-container {
-  position: fixed;
-  top: calc(50% + 120px); /* below buttons */
-  left: 50%;
-  transform: translateX(-50%);
   width: 200px;
-  z-index: 1;
   opacity: 1;
   transition: opacity 0.4s ease;
 }
@@ -125,9 +120,9 @@ html, body {
 }
 
 #volumeSlider {
-  appearance: none; /* Standard */
-  -webkit-appearance: none; /* Chrome/Safari */
-  -moz-appearance: none; /* Firefox */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   width: 100%;
   height: 4px;
   background: rgba(255,255,255,0.3);
@@ -166,7 +161,6 @@ html, body {
   transform: scale(1.2);
 }
 
-/* Optional: Firefox track */
 #volumeSlider::-moz-range-track {
   background: rgba(255,255,255,0.3);
   height: 4px;

@@ -57,3 +57,7 @@ buttons.forEach(button => {
     window.open(link, '_blank');
   });
 });
+
+
+const ctaText = document.querySelector('.cta-text');
+if (ctaText) ctaText.addEventListener("click", startReversedAudio, { once: true });
