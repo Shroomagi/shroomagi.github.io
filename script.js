@@ -4,13 +4,15 @@ let audioCtx;
 
 // Modern mobile detection (feature-based)
 function isMobileTouchDevice() {
-  const hasTouch =
-    ('ontouchstart' in window) ||
-    navigator.maxTouchPoints > 0;
-
-  const smallScreen = window.matchMedia("(max-width: 768px)").matches;
-
-  return hasTouch && smallScreen;
+  // Check for touch capability
+  const hasTouch = ('ontouchstart' in window) || 
+                   (navigator.maxTouchPoints > 0) || 
+                   (navigator.msMaxTouchPoints > 0);
+  
+  // Check for mobile user agent as backup
+  const mobileUA = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  return hasTouch || mobileUA;
 }
 
 function startReversedAudio() {
